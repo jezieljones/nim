@@ -12,16 +12,17 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://nim-fawn.vercel.app/'),
+  metadataBase: new URL('https://nextgoalsports.com'),
   alternates: {
-    canonical: '/'
+    canonical: '/',
   },
   title: {
-    default: 'Nim - Personal website template',
-    template: '%s | Nim'
+    default: 'Next Goal Sports Management',
+    template: '%s | Next Goal Sports Management',
   },
-  description:  'Nim is a free and open-source personal website template built with Next.js 15, React 19 and Motion-Primitives.',
-};
+  description:
+    'Next Goal Sports Management focuses on the whole athlete and builds tools to grow players and help them pursue their dreams.',
+}
 
 const geist = Geist({
   variable: '--font-geist',
