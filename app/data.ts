@@ -2,7 +2,8 @@ type Product = {
   name: string
   description: string
   link: string
-  video: string
+  video?: string
+  image?: string
   id: string
 }
 
@@ -25,8 +26,7 @@ export const PROJECTS: Product[] = [
     description:
       'The current app from Next Goal Sports Management for teams, players, and growth.',
     link: 'https://teamflicks.com',
-    video:
-      'https://res.cloudinary.com/read-cv/video/upload/t_v_b/v1/1/profileItems/W2azTw5BVbMXfj7F53G92hMVIn32/newProfileItem/d898be8a-7037-4c71-af0c-8997239b050d.mp4?_a=DATAdtAAZAA0',
+    image: '/tf_app_screenshot.png',
     id: 'product-teamflicks',
   },
 ]

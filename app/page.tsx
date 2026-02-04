@@ -10,6 +10,7 @@ import {
   MorphingDialogClose,
   MorphingDialogContainer,
 } from '@/components/ui/morphing-dialog'
+import Image from 'next/image'
 import {
   PROJECTS,
   ORGANIZATIONS,
@@ -36,11 +37,57 @@ const TRANSITION_SECTION = {
   duration: 0.3,
 }
 
-type ProjectVideoProps = {
-  src: string
+type ProjectMediaProps = {
+  videoSrc?: string
+  imageSrc?: string
+  alt: string
 }
 
-function ProjectVideo({ src }: ProjectVideoProps) {
+function ProjectMedia({ videoSrc, imageSrc, alt }: ProjectMediaProps) {
+  if (!videoSrc && !imageSrc) {
+    return null
+  }
+
+  const preview = videoSrc ? (
+    <video
+      src={videoSrc}
+      autoPlay
+      loop
+      muted
+      className="aspect-video w-full cursor-zoom-in rounded-xl"
+    />
+  ) : (
+    <Image
+      src={imageSrc as string}
+      alt={alt}
+      width={1600}
+      height={900}
+      className="aspect-video w-full cursor-zoom-in rounded-xl object-cover"
+      sizes="(min-width: 640px) 50vw, 100vw"
+      priority
+    />
+  )
+
+  const expanded = videoSrc ? (
+    <video
+      src={videoSrc}
+      autoPlay
+      loop
+      muted
+      className="aspect-video h-[50vh] w-full rounded-xl md:h-[70vh]"
+    />
+  ) : (
+    <Image
+      src={imageSrc as string}
+      alt={alt}
+      width={1600}
+      height={900}
+      className="aspect-video h-[50vh] w-full rounded-xl object-cover md:h-[70vh]"
+      sizes="(min-width: 768px) 70vw, 100vw"
+      priority
+    />
+  )
+
   return (
     <MorphingDialog
       transition={{
@@ -50,23 +97,11 @@ function ProjectVideo({ src }: ProjectVideoProps) {
       }}
     >
       <MorphingDialogTrigger>
-        <video
-          src={src}
-          autoPlay
-          loop
-          muted
-          className="aspect-video w-full cursor-zoom-in rounded-xl"
-        />
+        {preview}
       </MorphingDialogTrigger>
       <MorphingDialogContainer>
         <MorphingDialogContent className="relative aspect-video rounded-2xl bg-zinc-50 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50">
-          <video
-            src={src}
-            autoPlay
-            loop
-            muted
-            className="aspect-video h-[50vh] w-full rounded-xl md:h-[70vh]"
-          />
+          {expanded}
         </MorphingDialogContent>
         <MorphingDialogClose
           className="fixed top-6 right-6 h-fit w-fit rounded-full bg-white p-1"
@@ -149,7 +184,11 @@ export default function Personal() {
           {PROJECTS.map((project) => (
             <div key={project.name} className="space-y-2">
               <div className="relative rounded-2xl bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50">
-                <ProjectVideo src={project.video} />
+                <ProjectMedia
+                  videoSrc={project.video}
+                  imageSrc={project.image}
+                  alt={`${project.name} preview`}
+                />
               </div>
               <div className="px-1">
                 <a
