@@ -22,6 +22,11 @@ export const metadata: Metadata = {
   },
   description:
     'Next Goal Sports Management focuses on the whole athlete and builds tools to grow players and help them pursue their dreams.',
+  icons: {
+    icon: '/ngsmlogo.jpeg',
+    shortcut: '/ngsmlogo.jpeg',
+    apple: '/ngsmlogo.jpeg',
+  },
 }
 
 const geist = Geist({
