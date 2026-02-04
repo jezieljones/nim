@@ -19,6 +19,14 @@ export function Header() {
           Athlete-first sports management and technology
         </TextEffect>
       </div>
+      <a
+        href="https://tally.so/r/A7v5Wl"
+        target="_blank"
+        rel="noreferrer"
+        className="text-sm text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+      >
+        Hiring
+      </a>
     </header>
   )
 }
