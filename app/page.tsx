@@ -229,9 +229,21 @@ export default function Personal() {
               <div className="relative h-full w-full rounded-[15px] bg-white p-4 dark:bg-zinc-950">
                 <div className="relative flex w-full flex-row justify-between">
                   <div>
-                    <h4 className="font-normal dark:text-zinc-100">
-                      {organization.name}
-                    </h4>
+                    <div className="flex items-center gap-2">
+                      {organization.logo ? (
+                        <Image
+                          src={organization.logo}
+                          alt={`${organization.name} logo`}
+                          width={24}
+                          height={24}
+                          className="h-6 w-6"
+                          unoptimized
+                        />
+                      ) : null}
+                      <h4 className="font-normal dark:text-zinc-100">
+                        {organization.name}
+                      </h4>
+                    </div>
                     <p className="text-zinc-500 dark:text-zinc-400">
                       {organization.description}
                     </p>

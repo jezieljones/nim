@@ -12,6 +12,7 @@ type Organization = {
   description: string
   location: string
   link: string
+  logo?: string
   id: string
 }
 
@@ -37,10 +38,11 @@ export const ORGANIZATIONS: Organization[] = [
     description: 'Girl club soccer team owned and supported by NGSM.',
     location: 'Denton, Texas',
     link: 'https://northlakesfc.com',
+    logo: '/logo.svg',
     id: 'org-north-lakes-fc',
   },
 ]
 
 export const SOCIAL_LINKS: SocialLink[] = []
 
-export const EMAIL = 'hello@nextgoalsports.com'
+export const EMAIL = 'hello@nextgoalsportsmanagement.com'
